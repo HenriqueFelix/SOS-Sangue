@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_blood"
+            android:title="Hemocentros" />
+
+        <item
+            android:id="@+id/nav_agendar_doacao"
+            android:icon="@drawable/ic_invitation_love"
+            android:title="Agendar Doação" />
+
+        <item
+            android:id="@+id/nav_solicitar_doacao"
+            android:icon="@drawable/ic_petition"
+            android:title="Solicitar Doação" />
+    </group>
+
+    <item android:title="Fique por dentro">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_feed"
+                    android:icon="@drawable/ic_feed"
+                    android:title="Feed" />
+
+                <item
+                    android:id="@+id/nav_historico"
+                    android:icon="@drawable/ic_time_log"
+                    android:title="Historico" />
+
+                <item
+                    android:id="@+id/nav_contatos"
+                    android:icon="@drawable/ic_phone"
+                    android:title="Fale conosco" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Mais">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_perfil"
+                    android:icon="@drawable/ic_user"
+                    android:title="Meus dados" />
+
+                <item
+                    android:id="@+id/nav_compartilhar"
+                    android:icon="@drawable/ic_share"
+                    android:title="Compartilhar" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_logout"
+                    android:title="Sair" />
+            </group>
+        </menu>
+    </item>
+</menu>

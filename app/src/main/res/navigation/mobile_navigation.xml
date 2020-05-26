@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.sossangue.view.fragments.HemocentroFragment"
+        android:label="Hemocentros"
+        tools:layout="@layout/fragment_hemocentro"/>
+
+    <fragment
+        android:id="@+id/nav_agendar_doacao"
+        android:name="com.example.sossangue.view.fragments.AngendarDoacaoFragment"
+        android:label="Agendar Doação"
+        tools:layout="@layout/fragment_angendar_doacao"/>
+
+    <fragment
+        android:id="@+id/nav_solicitar_doacao"
+        android:name="com.example.sossangue.view.fragments.SolicitarDoacaoFragment"
+        android:label="Solicitar Doação"
+        tools:layout="@layout/fragment_solicitar_doacao"/>
+
+    <fragment
+        android:id="@+id/nav_feed"
+        android:name="com.example.sossangue.view.fragments.FeedFragment"
+        android:label="Feed"
+        tools:layout="@layout/fragment_feed"/>
+
+    <fragment
+        android:id="@+id/nav_historico"
+        android:name="com.example.sossangue.view.fragments.HistoricoFragment"
+        android:label="Historico"
+        tools:layout="@layout/fragment_historico"/>
+
+    <fragment
+        android:id="@+id/nav_contatos"
+        android:name="com.example.sossangue.view.fragments.ContatosFragment"
+        android:label="Contatos"
+        tools:layout="@layout/fragment_contatos"/>
+
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.example.sossangue.view.fragments.PerfilFragment"
+        android:label="Meus dados"
+        tools:layout="@layout/fragment_perfil"/>
+
+</navigation>

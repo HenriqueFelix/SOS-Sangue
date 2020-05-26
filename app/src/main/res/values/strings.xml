@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SOS Sangue</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="doe_agora_motivacional"><b>Agende agora sua doação!</b> Doe sangue e salve vidas.</string>
+    <string name="msg_cadastre_se">Bem vindo ao <b>SOS Sangue</b>. Não perca tempo <b>cadastre-se agora!</b></string>
+</resources>

@@ -1,0 +1,11 @@
+/SOS Sangue/publish_key.jks
+
+Alias: sos_sangue
+Password: hfgs123
+
+
+HASH APP KEY:
+keytool -list -v -keystore "C:\AndroidStudioProjects\SOS Sangue\publish_key.jks"
+
+
+PROJECT --> src/release/res/values/google_map_api.xml
