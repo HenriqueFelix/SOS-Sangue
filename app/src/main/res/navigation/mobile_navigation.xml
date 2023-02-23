@@ -14,13 +14,13 @@
     <fragment
         android:id="@+id/nav_agendar_doacao"
         android:name="com.example.sossangue.view.fragments.AngendarDoacaoFragment"
-        android:label="Agendar Doação"
+        android:label="Agendar doação"
         tools:layout="@layout/fragment_angendar_doacao"/>
 
     <fragment
         android:id="@+id/nav_solicitar_doacao"
         android:name="com.example.sossangue.view.fragments.SolicitarDoacaoFragment"
-        android:label="Solicitar Doação"
+        android:label="Solicitar doação"
         tools:layout="@layout/fragment_solicitar_doacao"/>
 
     <fragment
@@ -32,13 +32,13 @@
     <fragment
         android:id="@+id/nav_historico"
         android:name="com.example.sossangue.view.fragments.HistoricoFragment"
-        android:label="Historico"
+        android:label="Histórico"
         tools:layout="@layout/fragment_historico"/>
 
     <fragment
         android:id="@+id/nav_contatos"
         android:name="com.example.sossangue.view.fragments.ContatosFragment"
-        android:label="Contatos"
+        android:label="Fale conosco"
         tools:layout="@layout/fragment_contatos"/>
 
     <fragment

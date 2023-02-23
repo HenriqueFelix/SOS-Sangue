@@ -169,6 +169,6 @@ public class PerfilFragment extends Fragment {
 			return;
 		}
 
-		usuarioController.editarUsuario(Constantes.getUsuarioLogado().getCodigoUsuario(), nome, cpf, email, telefone, senha, contra_senha, tipo_sangue, sexo, data_nasc, bubbleProgress, toolbar);
+		usuarioController.editarUsuario(Constantes.getUsuarioLogado().getCodigoUsuario(), nome, telefone, senha, contra_senha, tipo_sangue, sexo, data_nasc, bubbleProgress, toolbar);
 	}
 }

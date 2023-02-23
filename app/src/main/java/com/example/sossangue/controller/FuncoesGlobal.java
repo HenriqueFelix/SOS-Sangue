@@ -8,11 +8,15 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.sossangue.R;
+import com.example.sossangue.controller.adapter.AutoCompleteHemocentroAdapter;
 import com.example.sossangue.model.Hemocentro;
+import com.example.sossangue.view.MainNavigationActivity;
+import com.example.sossangue.view.fragments.AngendarDoacaoFragment;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -32,6 +36,8 @@ import java.util.Map;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 public class FuncoesGlobal {
 	static boolean verificaConexao(Context ctx) {
@@ -306,9 +312,6 @@ public class FuncoesGlobal {
 
 	public static Hemocentro hemocentroSelecionado;
 	public static void setupAutoCompleteHemocentro(final AutoCompleteTextView viewAucHemocentro, final List<Hemocentro> objects, Context ctx) {
-		//ArrayAdapter<Hemocentro> adapter = new ArrayAdapter<>(ctx, android.R.layout.simple_dropdown_item_1line, objects);
-		//viewAucHemocentro.setAdapter(adapter);
-
 		hemocentroSelecionado = null;
 
 		AutoCompleteHemocentroAdapter customerAdapter = new AutoCompleteHemocentroAdapter(ctx, R.layout.customer_auto, objects);
@@ -326,6 +329,22 @@ public class FuncoesGlobal {
 				}
 			}
 		});
+	}
 
+	static void ativarBotao(Context ctx, final Button btn) {
+		if (btn != null) {
+			((Activity) ctx).runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					btn.setEnabled(true);
+				}
+			});
+		}
+	}
+
+	static void changeFragment(Fragment someFragment, Context ctx) {
+		//AngendarDoacaoFragment someFragment = new AngendarDoacaoFragment();
+		FragmentManager fragmentManager = ((MainNavigationActivity)ctx).getSupportFragmentManager();
+		fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, someFragment).commit();
 	}
 }

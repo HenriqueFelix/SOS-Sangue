@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".view.fragments.SolicitarDoacaoFragment"
     android:background="@color/white"
-    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
+    android:theme="@style/AppThemeInputs">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -37,6 +37,8 @@
                     android:singleLine="true"
                     android:hint="Nome"
                     android:enabled="false"
+                    android:focusable="false"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,6 +58,8 @@
                     android:singleLine="true"
                     android:hint="CPF"
                     android:enabled="false"
+                    android:focusable="false"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,6 +81,7 @@
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!--
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,6 +163,21 @@
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
             </LinearLayout>
+            -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:textColorHint="@color/black"
+                android:layout_marginTop="10dp">
+                <AutoCompleteTextView
+                    android:id="@+id/aucHemocentro"
+                    android:layout_width="match_parent"
+                    android:layout_height="53.6dp"
+                    android:hint="Hemocentro"
+                    android:textColorHint="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

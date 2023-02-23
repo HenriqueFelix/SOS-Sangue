@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.fragments.ContatosFragment"
-    android:orientation="vertical"
-    android:background="@color/white"
+    android:layout_height="wrap_content"
     android:theme="@style/AppThemeInputs">
     <ScrollView
         android:layout_width="match_parent"
@@ -16,9 +13,10 @@
             android:orientation="vertical"
             android:padding="20dp">
             <TextView
+                android:id="@+id/lblModal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Entre em contato através dos nossos canais de e-mail ou telefone."
+                android:text="Agendar doação de sangue para João Ninguém"
                 android:textSize="@dimen/titulo"
                 android:textColor="@color/colorPrimary"/>
 
@@ -27,69 +25,14 @@
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:textColorHint="@color/black"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="10dp">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTipoSangue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="E-mail"
-                    android:text="sossangue@suporte.com.br"
-                    android:textColor="@color/colorPrimary"
                     android:enabled="false"
                     android:focusable="false"
-                    android:textColorHint="@color/colorPrimary"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:textColorHint="@color/black"
-                android:layout_marginTop="10dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Telefone"
-                    android:text="(81) 98877-6655"
-                    android:textColor="@color/colorPrimary"
-                    android:enabled="false"
-                    android:focusable="false"
-                    android:textColorHint="@color/colorPrimary"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:textColorHint="@color/black"
-                android:layout_marginTop="10dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtMensagem"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lines="10"
-                    android:minLines="5"
-                    android:gravity="top|left"
-                    android:maxLines="15"
-                    android:hint="Mensagem"
-                    android:textColorHint="@color/black"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:textColorHint="@color/black"
-                android:layout_marginTop="10dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:lines="1"
-                    android:singleLine="true"
-                    android:hint="E-mail"
-                    android:enabled="false"
+                    android:hint="Tipo Sanguineo"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -101,27 +44,57 @@
                 android:textColorHint="@color/black"
                 android:layout_marginTop="10dp">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtTelefone"
+                    android:id="@+id/edtHemocentro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:hint="Hemocentro"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:textColorHint="@color/black"
+                android:layout_marginTop="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:lines="1"
                     android:singleLine="true"
-                    android:hint="Telefone"
-                    android:textColor="@color/black"
+                    android:hint="Data da doação"
+                    android:clickable="true"
+                    android:editable="false"
+                    android:focusable="false"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnEnviar"
+                android:id="@+id/btnAgendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:textAllCaps="false"
-                android:text="ENVIAR"/>
+                android:text="AGENDAR"/>
+
+            <TextView
+                android:id="@+id/lblMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:textSize="@dimen/label"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+</RelativeLayout>

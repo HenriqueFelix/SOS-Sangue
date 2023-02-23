@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorTransparentTheme">
 
-    <com.example.sossangue.controller.BubbleProgressBar
+    <com.example.sossangue.controller.adapter.BubbleProgressBar
         android:id="@+id/bubble_progress"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"

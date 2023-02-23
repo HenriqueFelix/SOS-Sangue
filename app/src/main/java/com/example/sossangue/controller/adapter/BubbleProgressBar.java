@@ -1,4 +1,4 @@
-package com.example.sossangue.controller;
+package com.example.sossangue.controller.adapter;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -19,7 +19,7 @@ public class BubbleProgressBar extends View {
 	public static final int BUBBLE_MAX_RADIUS_IN_DP = 8;
 	public static final int BUBBLE_MIN_RADIUS_IN_DP = 4;
 	public static final int BUBBLE_GAP_IN_DP = 8;
-	public static final int ANIMATION_TIME = 800; // in milliseconds
+	public static final int ANIMATION_TIME = 800;
 	public static final double[] radiuses = {0, 0, 0, 0, 0};
 	private static double mPhaseDifference = 0;
 	private static final String color = "#ffffff";

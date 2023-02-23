@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".view.fragments.AngendarDoacaoFragment"
     android:background="@color/white"
-    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
+    android:theme="@style/AppThemeInputs">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -37,6 +37,7 @@
                     android:lines="1"
                     android:singleLine="true"
                     android:hint="Nome"
+                    android:textColor="@color/black"
                     android:enabled="false"
                     android:textColorHint="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>

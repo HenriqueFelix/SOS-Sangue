@@ -14,6 +14,7 @@ import com.example.sossangue.R;
 import com.example.sossangue.controller.Constantes;
 import com.example.sossangue.view.fragments.AngendarDoacaoFragment;
 import com.example.sossangue.view.fragments.ContatosFragment;
+import com.example.sossangue.view.fragments.FeedFragment;
 import com.example.sossangue.view.fragments.HemocentroFragment;
 import com.example.sossangue.view.fragments.HistoricoFragment;
 import com.example.sossangue.view.fragments.PerfilFragment;
@@ -52,11 +53,18 @@ public class MainNavigationActivity extends AppCompatActivity {
 		NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 		NavigationUI.setupWithNavController(navigationView, navController);
 
-
 		navigationView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 			@Override
 			public boolean onMenuItemClick(MenuItem item) {
 				openModalLogout();
+				return false;
+			}
+		});
+
+		navigationView.getMenu().findItem(R.id.nav_compartilhar).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				openShareApp();
 				return false;
 			}
 		});
@@ -83,13 +91,17 @@ public class MainNavigationActivity extends AppCompatActivity {
 		ContatosFragment.drawerLayout 			= drawer;
 		ContatosFragment.toolbar 				= toolbar;
 
+		FeedFragment.bubbleProgress 			= bubbleProgress;
+		FeedFragment.drawerLayout 				= drawer;
+		FeedFragment.toolbar 					= toolbar;
+
 		HistoricoFragment.bubbleProgress 		= bubbleProgress;
 		HistoricoFragment.drawerLayout 			= drawer;
 		HistoricoFragment.toolbar 				= toolbar;
 
 		PerfilFragment.bubbleProgress 			= bubbleProgress;
-		PerfilFragment.drawerLayout 		= drawer;
-		PerfilFragment.toolbar 				= toolbar;
+		PerfilFragment.drawerLayout 			= drawer;
+		PerfilFragment.toolbar 					= toolbar;
 
 		SolicitarDoacaoFragment.bubbleProgress 	= bubbleProgress;
 		SolicitarDoacaoFragment.drawerLayout 	= drawer;
@@ -133,4 +145,14 @@ public class MainNavigationActivity extends AppCompatActivity {
 		AlertDialog dialog = builder.create();
 		dialog.show();
 	}
+
+	private void openShareApp() {
+		String message = "Baixe agora o app SOS Sangue. Doe sangue e salve vidas!";
+		Intent share = new Intent(Intent.ACTION_SEND);
+		share.setType("text/plain");
+		share.putExtra(Intent.EXTRA_TEXT, message);
+
+		startActivity(Intent.createChooser(share, "Compartilhar SOS Sangue."));
+	}
+
 }

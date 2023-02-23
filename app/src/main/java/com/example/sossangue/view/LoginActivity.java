@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
 		final UsuarioController usuarioController = new UsuarioController(LoginActivity.this);
 
-		Button btnLogin = findViewById(R.id.btnLogin);
+		final Button btnLogin = findViewById(R.id.btnLogin);
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -52,7 +52,9 @@ public class LoginActivity extends AppCompatActivity {
 					e.printStackTrace();
 				}
 
-				usuarioController.loginApp(login, senha, bubbleProgress);
+				btnLogin.setEnabled(false);
+
+				usuarioController.loginApp(login, senha, bubbleProgress, btnLogin);
 			}
 		});
 

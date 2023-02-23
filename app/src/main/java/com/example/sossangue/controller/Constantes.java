@@ -5,8 +5,7 @@ import com.example.sossangue.model.Usuario;
 
 import java.util.ArrayList;
 
-public class Constantes
-{
+public class Constantes {
 	static String urlWebservice = "https://sanguesos.000webhostapp.com/webservice/mobile.php";
 
 	private static Usuario usuarioLogado;
@@ -40,13 +39,11 @@ public class Constantes
 		return arrSexos;
 	}
 
-	public static Usuario getUsuarioLogado()
-	{
+	public static Usuario getUsuarioLogado() {
 		return usuarioLogado;
 	}
 
-	static void setUsuarioLogado(Usuario usuarioLogado)
-	{
+	static void setUsuarioLogado(Usuario usuarioLogado) {
 		Constantes.usuarioLogado = usuarioLogado;
 	}
 

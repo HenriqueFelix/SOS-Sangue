@@ -12,12 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.sossangue.R;
 import com.example.sossangue.controller.Constantes;
 import com.example.sossangue.controller.DoacaoController;
+import com.example.sossangue.controller.FuncoesGlobal;
 import com.example.sossangue.controller.MaskEditUtil;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -38,9 +40,9 @@ public class SolicitarDoacaoFragment extends Fragment {
 
 	private DoacaoController doacaoController;
 
-	private TextInputEditText edtTelefone;
+	private TextInputEditText edtTelefone, edtMotivo;
 
-	private AutoCompleteTextView aucTipoSangue;
+	private AutoCompleteTextView aucHemocentro, aucTipoSangue;
 	private TextView lblMsg;
 
 	@Override
@@ -53,14 +55,20 @@ public class SolicitarDoacaoFragment extends Fragment {
 		edtNome.setEnabled(false);
 		edtNome.setText(Constantes.getUsuarioLogado().getNome());
 
-		edtTelefone = v.findViewById(R.id.edtTelefone);
-		edtTelefone.addTextChangedListener(MaskEditUtil.mask(edtTelefone, MaskEditUtil.FORMAT_FONE));
-		edtTelefone.setText(Constantes.getUsuarioLogado().getTelefone());
-
 		TextInputEditText edtCPF = v.findViewById(R.id.edtCPF);
 		edtCPF.setEnabled(false);
 		edtCPF.setText(Constantes.getUsuarioLogado().getCpf());
 
+		edtTelefone = v.findViewById(R.id.edtTelefone);
+		edtTelefone.addTextChangedListener(MaskEditUtil.mask(edtTelefone, MaskEditUtil.FORMAT_FONE));
+		edtTelefone.setText(Constantes.getUsuarioLogado().getTelefone());
+
+		aucHemocentro = v.findViewById(R.id.aucHemocentro);
+		if (Constantes.getListHemocentros() != null) {
+			FuncoesGlobal.setupAutoCompleteHemocentro(aucHemocentro, Constantes.getListHemocentros(), getContext());
+		}
+
+		edtMotivo = v.findViewById(R.id.edtMotivo);
 
 		ArrayList<String> listTipoSangue = Constantes.getListTiposSangues();
 		listTipoSangue.add("Todos os tipos");
@@ -72,6 +80,48 @@ public class SolicitarDoacaoFragment extends Fragment {
 			aucTipoSangue.setText(Constantes.getUsuarioLogado().getTipoSangue(), false);
 		}
 
+		final Button btnSolicitar = v.findViewById(R.id.btnSolicitar);
+		btnSolicitar.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				solicitarDoacao(btnSolicitar, lblMsg);
+			}
+		});
+
+		lblMsg = v.findViewById(R.id.lblMsg);
+
 		return v;
+	}
+
+	private void solicitarDoacao(Button btnSolicitar, TextView lblMsg) {
+		String telefone = edtTelefone.getText().toString().trim();
+		telefone = telefone.replace("'", " ");
+		telefone = telefone.replace("\'", " ");
+		telefone = telefone.replace("\"", " ");
+		telefone = telefone.trim();
+
+		String motivo_solicitacao = edtMotivo.getText().toString().trim();
+		motivo_solicitacao = motivo_solicitacao.replace("'", " ");
+		motivo_solicitacao = motivo_solicitacao.replace("\'", " ");
+		motivo_solicitacao = motivo_solicitacao.replace("\"", " ");
+		motivo_solicitacao = motivo_solicitacao.trim();
+
+		int codigo_hemocentro = 0;
+
+		if (FuncoesGlobal.hemocentroSelecionado != null) {
+			if (FuncoesGlobal.hemocentroSelecionado.getNomeFantasia().trim().equals(aucHemocentro.getText().toString().trim())) {
+				codigo_hemocentro = FuncoesGlobal.hemocentroSelecionado.getCodigoHemocentro();
+			} else {
+				FuncoesGlobal.hemocentroSelecionado = null;
+			}
+		}
+
+		String tipo_sangue = "Todos os tipos";
+		String strAucTipoSangue = aucTipoSangue.getText().toString().trim();
+		if(!strAucTipoSangue.equals("")) {
+			tipo_sangue = strAucTipoSangue;
+		}
+
+		doacaoController.solicitarDoacao(bubbleProgress, drawerLayout, toolbar, Constantes.getUsuarioLogado().getCodigoUsuario(), tipo_sangue, telefone, motivo_solicitacao, codigo_hemocentro, btnSolicitar, lblMsg);
 	}
 }

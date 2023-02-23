@@ -24,14 +24,13 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp">
             <TextView
-                android:id="@+id/lblTipo"
+                android:id="@+id/lblNome"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="7.5"
                 android:textSize="@dimen/label"
-                android:text="Doação"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:text="João Ninguem da Silva dos Santos"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/lblData"
@@ -58,23 +57,17 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/label"
-                android:text="Hemocentro:"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
-
+            android:paddingRight="10dp"
+            android:weightSum="10">
             <TextView
                 android:id="@+id/lblHemocentro"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="10"
                 android:textSize="@dimen/label"
                 android:text="Hospital ABCDE"
                 android:textColor="@color/black"
-                android:layout_marginLeft="3dp"/>
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -86,21 +79,51 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp">
             <TextView
+                android:id="@+id/lblMotivo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label"
-                android:text="Tipo Sanguíneo:"
-                android:textStyle="bold"
+                android:text="Motivo da doação de sangue..."
                 android:textColor="@color/black"/>
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/lblTipoSangue"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:weightSum="10">
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/label"
-                android:text="O+"
-                android:textColor="@color/black"
-                android:layout_marginLeft="3dp"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/lblTipoSangue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/label"
+                    android:text="Todos os tipos"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="right"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+                <Button
+                    android:id="@+id/btnDoar"
+                    android:layout_width="105dp"
+                    android:layout_height="33dp"
+                    android:text="DOAR AGORA"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/bg_button_custom"
+                    android:textAllCaps="false"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

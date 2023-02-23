@@ -3,6 +3,8 @@ package com.example.sossangue.controller;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.example.sossangue.model.Hemocentro;
@@ -33,7 +35,7 @@ public class UsuarioController {
 		this.mUsuario 	= usu;
 	}
 
-	public void loginApp(final String login, final String senha, final LinearLayout bubbleProgress) {
+	public void loginApp(final String login, final String senha, final LinearLayout bubbleProgress, final Button btnLogin) {
 		if (FuncoesGlobal.verificaConexao(mCtx)) {
 			new Thread(new Runnable() {
 				@Override
@@ -51,6 +53,7 @@ public class UsuarioController {
 
 						if (JSON == null || JSON.equals("")) {
 							FuncoesGlobal.showCustomProgress(mCtx, null, null, bubbleProgress, 0, 1, "Falha ao realizar operação! Serviço temporariamente indisponível.");
+							FuncoesGlobal.ativarBotao(mCtx, btnLogin);
 							return;
 						}
 
@@ -136,10 +139,13 @@ public class UsuarioController {
 
 						FuncoesGlobal.showCustomProgress(mCtx, null, null, bubbleProgress, 0, 1, "Ops! Falha ao realizar operação."); //FINALIZA O PROGRESS
 					}
+
+					FuncoesGlobal.ativarBotao(mCtx, btnLogin);
 				}
 			}).start();
 		} else {
 			FuncoesGlobal.toastApp("Falha ao realizar operação! Verifique sua conexão.", mCtx);
+			FuncoesGlobal.ativarBotao(mCtx, btnLogin);
 		}
 	}
 
@@ -201,7 +207,7 @@ public class UsuarioController {
 		}
 	}
 
-	public void editarUsuario(final int codigo_usuario, final String nome, final String cpf, final String email, final String telefone, final String senha, final String contra_senha, final String tipo_sangue, final int sexo, final String data_nasc, final LinearLayout bubbleProgress, final Toolbar toolbar) {
+	public void editarUsuario(final int codigo_usuario, final String nome, final String telefone, final String senha, final String contra_senha, final String tipo_sangue, final int sexo, final String data_nasc, final LinearLayout bubbleProgress, final Toolbar toolbar) {
 		if (FuncoesGlobal.verificaConexao(mCtx)) {
 			new Thread(new Runnable() {
 				@Override
@@ -214,8 +220,6 @@ public class UsuarioController {
 						Params.put("metodo", 			"EditarUsuario");
 						Params.put("codigo_usuario", 	String.valueOf(codigo_usuario));
 						Params.put("nome", 				nome);
-						Params.put("cpf", 				cpf);
-						Params.put("email", 			email);
 						Params.put("telefone", 			telefone);
 						Params.put("senha", 			senha);
 						Params.put("contra_senha", 		contra_senha);
@@ -236,6 +240,79 @@ public class UsuarioController {
 						String msg = objectJSON.getString("mensagem");
 
 						if (valido == 1) {
+							Usuario usuario = new Usuario();
+							usuario.setCodigoUsuario(Constantes.getUsuarioLogado().getCodigoUsuario());
+							usuario.setCpf(Constantes.getUsuarioLogado().getCpf());
+							usuario.setEmail(Constantes.getUsuarioLogado().getEmail());
+							usuario.setNome(nome);
+							usuario.setSenha(senha);
+							usuario.setTelefone(telefone);
+							usuario.setDataNascimento(data_nasc);
+							usuario.setTipoSangue(tipo_sangue);
+							usuario.setSexo(sexo);
+							usuario.setPeso(0);
+							usuario.setAltura(0);
+
+							Constantes.setUsuarioLogado(usuario);
+
+							FuncoesGlobal.showCustomProgress(mCtx, null, toolbar, bubbleProgress, 0, 1, msg);
+						} else {
+							FuncoesGlobal.showCustomProgress(mCtx, null, toolbar, bubbleProgress, 0, 1, msg);
+						}
+
+						System.gc(); //LIBERA ESPAÇO NA MEMORIA
+					} catch (Exception e) {
+						e.printStackTrace();
+						System.gc(); //LIBERA ESPAÇO NA MEMORIA
+
+						FuncoesGlobal.showCustomProgress(mCtx, null, toolbar, bubbleProgress, 0, 1, "Ops! Falha ao realizar operação."); //FINALIZA O PROGRESS
+					}
+				}
+			}).start();
+		} else {
+			FuncoesGlobal.toastApp("Falha ao realizar operação! Verifique sua conexão.", mCtx);
+		}
+	}
+
+	public void enviarMensagem(final int codigo_usuario, final String mensagem, final String telefone, final String email, final LinearLayout bubbleProgress, final Toolbar toolbar, final Button btnEnviar) {
+		if (FuncoesGlobal.verificaConexao(mCtx)) {
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						//INICIA O PROGRESS
+						FuncoesGlobal.showCustomProgress(mCtx, null, toolbar, bubbleProgress, 1, 0, null);
+
+						Map<String, String> Params = new HashMap<>();
+						Params.put("metodo", 			"EnviarMensagem");
+						Params.put("codigo_usuario", 	String.valueOf(codigo_usuario));
+						Params.put("mensagem", 			mensagem);
+						Params.put("email", 			email);
+						Params.put("telefone", 			telefone);
+
+						String JSON = FuncoesGlobal.executeHttptPostDataFile(Constantes.urlWebservice, Params, "", "", "");
+
+						if (JSON == null || JSON.equals("")) {
+							FuncoesGlobal.showCustomProgress(mCtx, null, toolbar, bubbleProgress, 0, 1, "Falha ao realizar operação! Serviço temporariamente indisponível.");
+							return;
+						}
+
+						JSONObject objectJSON = new JSONObject(JSON);
+
+						int valido = objectJSON.getInt("valido");
+						String msg = objectJSON.getString("mensagem");
+
+						if (valido == 1) {
+							if (btnEnviar != null) {
+								((Activity)mCtx).runOnUiThread(new Runnable() {
+									@Override
+									public void run() {
+										btnEnviar.setEnabled(false);
+										btnEnviar.setVisibility(View.GONE);
+									}
+								});
+							}
+
 							FuncoesGlobal.showCustomProgress(mCtx, null, toolbar, bubbleProgress, 0, 1, msg);
 						} else {
 							FuncoesGlobal.showCustomProgress(mCtx, null, toolbar, bubbleProgress, 0, 1, msg);

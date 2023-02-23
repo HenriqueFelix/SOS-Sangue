@@ -1,4 +1,4 @@
-package com.example.sossangue.controller;
+package com.example.sossangue.controller.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

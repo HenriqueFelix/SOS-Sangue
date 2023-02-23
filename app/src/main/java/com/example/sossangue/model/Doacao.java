@@ -9,6 +9,8 @@ public class Doacao {
 	private Hemocentro hemocentro;
 	private int status_solicitacao;
 	private Usuario usuarioSolicitante;
+	private String data_hora_cadastro;
+	private String motivo_solicitacao;
 
 	public Doacao() { }
 
@@ -60,23 +62,35 @@ public class Doacao {
 		this.flag_tipo_doacao = flag_tipo;
 	}
 
-	public int getStatusSolicitacao()
-	{
+	public int getStatusSolicitacao() {
 		return status_solicitacao;
 	}
 
-	public void setStatusSolicitacao(int status_solicitacao)
-	{
+	public void setStatusSolicitacao(int status_solicitacao) {
 		this.status_solicitacao = status_solicitacao;
 	}
 
-	public Usuario getUsuarioSolicitante()
-	{
+	public Usuario getUsuarioSolicitante() {
 		return usuarioSolicitante;
 	}
 
-	public void setUsuarioSolicitante(Usuario usuarioSolicitante)
-	{
+	public void setUsuarioSolicitante(Usuario usuarioSolicitante) {
 		this.usuarioSolicitante = usuarioSolicitante;
+	}
+
+	public String getDataHoraCadastro() {
+		return data_hora_cadastro;
+	}
+
+	public void setDataHoraCadastro(String data_hora_cadastro) {
+		this.data_hora_cadastro = data_hora_cadastro;
+	}
+
+	public String getMotivoSolicitacao() {
+		return motivo_solicitacao;
+	}
+
+	public void setMotivoSolicitacao(String obs) {
+		this.motivo_solicitacao = obs;
 	}
 }

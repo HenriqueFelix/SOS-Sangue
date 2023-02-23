@@ -12,12 +12,12 @@
         <item
             android:id="@+id/nav_agendar_doacao"
             android:icon="@drawable/ic_invitation_love"
-            android:title="Agendar Doação" />
+            android:title="Agendar doação" />
 
         <item
             android:id="@+id/nav_solicitar_doacao"
             android:icon="@drawable/ic_petition"
-            android:title="Solicitar Doação" />
+            android:title="Solicitar doação" />
     </group>
 
     <item android:title="Fique por dentro">
@@ -31,7 +31,7 @@
                 <item
                     android:id="@+id/nav_historico"
                     android:icon="@drawable/ic_time_log"
-                    android:title="Historico" />
+                    android:title="Histórico" />
 
                 <item
                     android:id="@+id/nav_contatos"
